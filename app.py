@@ -22,7 +22,7 @@ def upload_pdf():
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
             file.save(tmp.name)
             try:
-                tables = camelot.read_pdf(tmp.name, pages='all', strip_text='\n')
+                tables = camelot.read_pdf(tmp.name, pages='all', flavor='lattice', strip_text='\n')
                 for table in tables:
                     df = table.df
                     for i, row in df.iterrows():
